@@ -35,4 +35,35 @@ public class TestPalindrome {
             assertEquals(palindrome.isPalindrome(entry.getKey()), entry.getValue());
         }
     }
+
+    @Test
+    public void testPalindromeOffByOne() {
+        CharacterComparator cc = new OffByOne();
+        Map<String, Boolean> words = new HashMap<>() {
+            {
+                put("abc", false);
+                put("abccba", false);
+                put("AbccBa", false);
+                put("", true);
+                put("a", true);
+                put("acaca", false);
+                put("acadb", true);
+                put("fcedg", true);
+                put("hjcjklibkg", true);
+                put("defgsdsctfgdc", true);
+            }
+        };
+        for (Map.Entry<String, Boolean> entry : words.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+            System.out.println(palindrome.isPalindrome(entry.getKey(), cc));
+            System.out.println("-----------------------");
+            assertEquals(palindrome.isPalindrome(entry.getKey(), cc), entry.getValue());
+        }
+    }
+
+    public static void main(String[] args) {
+        TestPalindrome test = new TestPalindrome();
+        test.testPalindromeOffByOne();
+    }
 }

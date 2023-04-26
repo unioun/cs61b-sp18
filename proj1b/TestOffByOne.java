@@ -1,18 +1,20 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 public class TestOffByOne {
     // You must use this CharacterComparator and not instantiate
     // new ones, or the autograder might be upset.
 
-    static CharacterComparator offByOne = new OffByOne();
+    @Test
+    public void testOffByOne() throws Exception {
+        OffByOne offset = new OffByOne();
+        assertTrue(offset.equalChars('a', 'b'));
+        assertTrue(offset.equalChars('r', 'q'));
+        assertTrue(offset.equalChars('&', '%'));
 
-    public static void main(String[] args) {
-        In in = new In("./library-sp18/data/words.txt");
-        Palindrome palindrome = new Palindrome();
-        int wordLength = 4;
-        while (!in.isEmpty()) {
-            String word = in.readString();
-            if (word.length() >= wordLength && palindrome.isPalindrome(word, offByOne)) {
-                System.out.println(word);
-            }
-        }
+        assertFalse(offset.equalChars('a', 'e'));
+        assertFalse(offset.equalChars('z', 'a'));
+        assertFalse(offset.equalChars('a', 'a'));
     }
+
 }

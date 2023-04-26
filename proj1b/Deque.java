@@ -1,5 +1,3 @@
-/* Double-ended queues are sequence containers with dynamic sizes that can be expanded or contracted on both ends (either its front or its back).
- */
 public interface Deque<T> {
     // Adds an item of type T to the front of the deque.
     public void addFirst(T item);

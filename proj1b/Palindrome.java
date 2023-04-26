@@ -11,11 +11,7 @@ public class Palindrome {
         if (word == null) {
             throw new IllegalArgumentException();
         }
-        // length is half length of the word,it represent times this function check
-        // palindrome.
         int length = word.length() / 2;
-        // value j is a cursor form other hand of the word and i is a cursor from one
-        // hand.
         int j = word.length() - 1;
         for (int i = 0; i < length; i++) {
             if (word.charAt(i) != word.charAt(j - i)) {
@@ -26,14 +22,10 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        if (word == null) {
+        if (word == null || cc == null) {
             throw new IllegalArgumentException();
         }
-        // length is half length of the word,it represent times this function check
-        // palindrome.
         int length = word.length() / 2;
-        // value j is a cursor form other hand of the word and i is a cursor from one
-        // hand.
         int j = word.length() - 1;
         for (int i = 0; i < length; i++) {
             if (!cc.equalChars(word.charAt(i), word.charAt(j - i))) {
@@ -41,5 +33,18 @@ public class Palindrome {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        In in = new In("../library-sp18/data/words.txt");
+        Palindrome palindrome = new Palindrome();
+        OffByOne offByOne = new OffByOne();
+        int wordLength = 4;
+        while (!in.isEmpty()) {
+            String word = in.readString();
+            if (word.length() >= wordLength && palindrome.isPalindrome(word, offByOne)) {
+                System.out.println(word);
+            }
+        }
     }
 }
