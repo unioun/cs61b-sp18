@@ -49,7 +49,7 @@ public class Planet {
     return Math.sqrt(calcDistancePow(b));
   }
 
-  private double calcForceExertedBy(Planet b) {
+  public double calcForceExertedBy(Planet b) {
     return (G * mass * b.mass) / calcDistancePow(b);
   }
 
