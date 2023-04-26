@@ -1,0 +1,6 @@
+*.jar
+proj0/audio/
+*.class
+proj0/examples/
+proj0/images/
+proj0/learnJava/
