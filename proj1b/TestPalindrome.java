@@ -61,9 +61,4 @@ public class TestPalindrome {
             assertEquals(palindrome.isPalindrome(entry.getKey(), cc), entry.getValue());
         }
     }
-
-    public static void main(String[] args) {
-        TestPalindrome test = new TestPalindrome();
-        test.testPalindromeOffByOne();
-    }
 }

@@ -35,7 +35,7 @@ public class Palindrome {
         return true;
     }
 
-    public static void main(String[] args) {
+    private static void testWords(String[] args) {
         In in = new In("../library-sp18/data/words.txt");
         Palindrome palindrome = new Palindrome();
         OffByOne offByOne = new OffByOne();
