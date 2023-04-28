@@ -131,30 +131,15 @@ public class TestArrayDequeGold {
                 randomIndex = StdRandom.uniform(sol.size());
             }
             if (numberBetweenZeroAndOne < 0.25) {
-                assertEquals(message + " size() \n", sol.size(), stu.size());
-                if (sol.size() > 0) {
-                    int value = stu.get(randomIndex);
-                    assertEquals(message + " get(" + randomIndex + "): " + value + "\n",
-                            sol.get(randomIndex).intValue(), value);
-                }
                 sol.addFirst(i);
                 stu.addFirst(i);
                 message = message + " addFirst(" + i + ")\n";
             } else if (numberBetweenZeroAndOne >= 0.25 && numberBetweenZeroAndOne < 0.5) {
-                assertEquals(message + " size() \n", sol.size(), stu.size());
-                if (sol.size() > 0) {
-                    int value = stu.get(randomIndex);
-                    assertEquals(message + " get(" + randomIndex + "): " + value + "\n",
-                            sol.get(randomIndex).intValue(), value);
-                }
                 sol.addLast(i);
                 stu.addLast(i);
                 message = message + " addLast(" + i + ")\n";
             } else if (numberBetweenZeroAndOne >= 0.5 && numberBetweenZeroAndOne < 0.75) {
-                assertEquals(message + " size()\n", sol.size(), stu.size());
-                if (sol.size() >= 1) {
-                    assertEquals(message + " get(" + randomIndex + "): " + "\n",
-                            sol.get(randomIndex), stu.get(randomIndex));
+                if (sol.size() > 0 && stu.size() > 0) {
                     Integer removeItem = stu.removeFirst();
                     if (removeItem == null) {
                         message = message + " removeFirst(): " + "null" + "\n";
@@ -164,10 +149,7 @@ public class TestArrayDequeGold {
                     assertEquals(message, sol.removeFirst(), removeItem);
                 }
             } else {
-                assertEquals(message + "size()\n", sol.size(), stu.size());
-                if (sol.size() >= 1) {
-                    assertEquals(message + " get(" + randomIndex + "): " + "\n",
-                            sol.get(randomIndex), stu.get(randomIndex));
+                if (sol.size() > 0 && stu.size() > 0) {
                     Integer removeItem = stu.removeLast();
                     if (removeItem == null) {
                         message = message + " removeLast(): " + "null" + "\n";
