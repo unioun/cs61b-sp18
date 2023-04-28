@@ -142,7 +142,7 @@ public class TestArrayDequeGold {
             } else {
                 if (sol.size() > 0 && stu.size() > 0) {
                     message = message + "removeLast()\n";
-                    assertEquals(message, sol.removeLast(), stu.removeFirst());
+                    assertEquals(message, sol.removeLast(), stu.removeLast());
                 }
             }
         }
