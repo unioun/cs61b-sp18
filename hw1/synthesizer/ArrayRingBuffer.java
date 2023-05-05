@@ -7,7 +7,7 @@ import javax.management.RuntimeErrorException;
 
 public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
-    private Integer first; // index for the next dequeue or peek
+    private int first; // index for the next dequeue or peek
     /* Index for the next enqueue. */
     private int last;
     /* Array for storing the buffer data. */
@@ -92,30 +92,24 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+        return new iter();
     }
 
     private class iter implements Iterator<T> {
-        private Integer index = first;
+        private int index = first;
+        private int step = 0;
 
         @Override
         public boolean hasNext() {
-            if (fillCount == 0) {
-                return false;
-            }
-            if (index == last) {
-
-            }
-
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'hasNext'");
+            return step == fillCount;
         }
 
         @Override
         public T next() {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'next'");
+            step++;
+            T item = rb[index];
+            index = (index == 0) ? capacity - 1 : index - 1;
+            return item;
         }
 
     }
