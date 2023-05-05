@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 /**
  * Tests the GuitarString class.
- * 
+ *
  * @author Josh Hug
  */
 

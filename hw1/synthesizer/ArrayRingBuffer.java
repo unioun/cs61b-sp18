@@ -1,11 +1,13 @@
 package synthesizer;
 
 import java.util.Iterator;
+import java.util.concurrent.ArrayBlockingQueue;
+
 import javax.management.RuntimeErrorException;
 
-public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Iterable {
+public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
-    private int first; // index for the next dequeue or peek
+    private Integer first; // index for the next dequeue or peek
     /* Index for the next enqueue. */
     private int last;
     /* Array for storing the buffer data. */
@@ -46,7 +48,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Itera
     @Override
     public T dequeue() {
         if (fillCount == 0) {
-            throw new RuntimeException("ring Buffer underflow");
+            throw new RuntimeException("Ring buffer underflow");
         } else {
             fillCount--;
             T item = rb[first];
@@ -89,16 +91,23 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Itera
     // TODO: When you get to part 5, implement the needed code to support iteration.
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }
 
     private class iter implements Iterator<T> {
+        private Integer index = first;
 
         @Override
         public boolean hasNext() {
-            
+            if (fillCount == 0) {
+                return false;
+            }
+            if (index == last) {
+
+            }
+
             // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'hasNext'");
         }
