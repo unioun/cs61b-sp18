@@ -1,9 +1,6 @@
 package synthesizer;
 
 import java.util.Iterator;
-import java.util.concurrent.ArrayBlockingQueue;
-
-import javax.management.RuntimeErrorException;
 
 public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
@@ -63,7 +60,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public T peek() {
         if (fillCount == 0) {
-            return null;
+            throw new RuntimeException("Ring buffer underflow");
         } else {
             return rb[first];
         }
